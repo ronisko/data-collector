@@ -2,27 +2,57 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<GridPane prefHeight="505.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+<GridPane prefHeight="761.0" prefWidth="1371.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
           xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.warehouse.controller.Controller">
-    <Button fx:id="createExternalSchemaButton" onAction="#createExternalSchema" text="Create External Tables"
-            GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-    <Button fx:id="createSchemaButton" onAction="#createSchema" text="Create Tables" GridPane.columnIndex="1"
-            GridPane.rowIndex="0"/>
+    <Button fx:id="createExternalSchemaButton" onAction="#createExternalSchema" style="-fx-background-color: green;"
+            text="Execute" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <Button fx:id="createSchemaButton" onAction="#createSchema" style="-fx-background-color: green;" text="Execute"
+            GridPane.columnIndex="1" GridPane.rowIndex="5"/>
     <Button fx:id="dropExternalSchemaButton" alignment="CENTER" contentDisplay="CENTER" onAction="#dropExternalSchema"
-            text="Drop External Tables" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <Button fx:id="dropSchemaButton" onAction="#dropSchema" text="Drop Tables" GridPane.columnIndex="1"
-            GridPane.rowIndex="1"/>
+            style="-fx-background-color: yellow;" text="Execute" GridPane.columnIndex="1" GridPane.rowIndex="11"/>
+    <Button fx:id="dropSchemaButton" onAction="#dropSchema" style="-fx-background-color: yellow;" text="Execute"
+            GridPane.columnIndex="1" GridPane.rowIndex="14"/>
 
-    <Button fx:id="insertExternalButton" onAction="#insertExternal" text="Insert External" GridPane.columnIndex="2"/>
+    <Button fx:id="insertExternalButton" onAction="#insertExternal" style="-fx-background-color: green;" text="Execute"
+            GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+    <Label text="Create external tables" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <Label text="Create tables" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    <Label text="Insert external" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+    <Label text="Drop external tables" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+    <Label text="Drop tables" GridPane.columnIndex="1" GridPane.rowIndex="13"/>
+    <Separator orientation="VERTICAL" prefHeight="33.0" prefWidth="88.0" GridPane.columnIndex="2"
+               GridPane.rowSpan="16"/>
     <columnConstraints>
+        <ColumnConstraints maxWidth="92.0" minWidth="10.0" prefWidth="34.0"/>
+        <ColumnConstraints halignment="CENTER" maxWidth="233.0" minWidth="168.0" prefWidth="168.0"/>
+        <ColumnConstraints maxWidth="162.0" minWidth="103.0" prefWidth="40.0"/>
+        <ColumnConstraints maxWidth="162.0" minWidth="103.0" prefWidth="100.0"/>
+        <ColumnConstraints maxWidth="162.0" minWidth="103.0" prefWidth="100.0"/>
+        <ColumnConstraints maxWidth="162.0" minWidth="103.0" prefWidth="100.0"/>
+        <ColumnConstraints maxWidth="162.0" minWidth="103.0" prefWidth="100.0"/>
+        <ColumnConstraints maxWidth="162.0" minWidth="103.0" prefWidth="100.0"/>
+        <ColumnConstraints maxWidth="162.0" minWidth="103.0" prefWidth="100.0"/>
+        <ColumnConstraints maxWidth="162.0" minWidth="103.0" prefWidth="100.0"/>
         <ColumnConstraints/>
         <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
+        <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0"/>
     </columnConstraints>
     <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0"/>
         <RowConstraints/>
-        <RowConstraints/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0"/>
+        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="32.0"/>
+        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="32.0"/>
+        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="32.0"/>
+        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="300.0"/>
+        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="32.0"/>
+        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="32.0"/>
+        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="32.0"/>
+        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="32.0"/>
+        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="32.0"/>
+        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="32.0"/>
     </rowConstraints>
 </GridPane>
