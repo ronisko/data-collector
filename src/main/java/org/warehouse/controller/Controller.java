@@ -21,4 +21,16 @@ public class Controller {
     public void dropExternalSchema() {
         schemaRepository.dropExternalTables();
     }
+
+    public void createSchema() {
+        schemaRepository.createTables();
+    }
+
+    public void dropSchema() {
+        schemaRepository.dropTables();
+    }
+
+    public void insertExternal() {
+        schemaRepository.insertExternalIntoTables();
+    }
 }

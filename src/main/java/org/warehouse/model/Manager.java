@@ -2,8 +2,6 @@ package org.warehouse.model;
 
 public class Manager {
 
-//    Field[] fields = Manager.class;
-
     private int id;
 
     private String firstname;

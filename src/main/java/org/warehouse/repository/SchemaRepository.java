@@ -13,22 +13,43 @@ import java.time.LocalDate;
 @Component
 public class SchemaRepository {
 
-    private static final String CREATE_EXTERNAL_SCRIPT = "CREATE EXTERNAL TABLE {1}_ext ({2}) USING (DATAOBJECT '/export/home/nz/{1}.csv' DELIMITER ';');";
-    private static final String DROP_SCHEMA = "DROP TABLE {1}_ext IF EXISTS";
-    private static final Class[] classes = new Class[]{Category.class, Location.class, Manager.class, Product.class, Sales.class, Shop.class, Transaction.class};
+    private static final String CREATE_EXTERNAL_TABLE_QUERY = "CREATE EXTERNAL TABLE {1}_ext ({2}) USING (DATAOBJECT '/export/home/nz/{1}.csv' DELIMITER ';');";
+    private static final String CREATE_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS {1}_tab ({2});";
+    private static final String DROP_EXTERNAL_TABLE_QUERY = "DROP TABLE {1}_ext IF EXISTS;";
+    private static final String DROP_TABLE_QUERY = "DROP TABLE {1}_tab IF EXISTS;";
+    private static final String INSERT_EXTERNAL = "INSERT INTO {1}_tab select * from {1}_ext;";
+    private static final Class[] CLASSES = new Class[]{Category.class, Location.class, Manager.class, Product.class, Sales.class, Shop.class, Transaction.class};
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     public void createExternalTables() {
-        for (Class aClass : classes) {
-            jdbcTemplate.execute(setParameters(CREATE_EXTERNAL_SCRIPT, aClass));
+        for (Class aClass : CLASSES) {
+            jdbcTemplate.execute(setParameters(CREATE_EXTERNAL_TABLE_QUERY, aClass));
         }
     }
 
     public void dropExternalTables() {
-        for (Class aClass : classes) {
-            jdbcTemplate.execute(setParameters(DROP_SCHEMA, aClass));
+        for (Class aClass : CLASSES) {
+            jdbcTemplate.execute(setParameters(DROP_EXTERNAL_TABLE_QUERY, aClass));
+        }
+    }
+
+    public void createTables() {
+        for (Class aClass : CLASSES) {
+            jdbcTemplate.execute(setParameters(CREATE_TABLE_QUERY, aClass));
+        }
+    }
+
+    public void dropTables() {
+        for (Class aClass : CLASSES) {
+            jdbcTemplate.execute(setParameters(DROP_TABLE_QUERY, aClass));
+        }
+    }
+
+    public void insertExternalIntoTables() {
+        for (Class aClass : CLASSES) {
+            jdbcTemplate.execute(setParameters(INSERT_EXTERNAL, aClass));
         }
     }
 
@@ -56,4 +77,3 @@ public class SchemaRepository {
                 new String[]{aClass.getSimpleName(), properties.toString()});
     }
 }
-//create external table category_table (id int, name varchar(40)) using (dataobject '/export/home/nz/Category.csv' DELIMITER ',');
