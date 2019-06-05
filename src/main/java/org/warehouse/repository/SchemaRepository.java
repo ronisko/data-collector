@@ -13,7 +13,8 @@ import java.time.LocalDate;
 @Component
 public class SchemaRepository {
 
-    private static final String CATEGORY_SCRIPT = "CREATE EXTERNAL TABLE {1}_ext ({2}) USING (DATAOBJECT '/export/home/nz/{1}.csv' DELIMITER ',');";
+    private static final String CREATE_EXTERNAL_SCRIPT = "CREATE EXTERNAL TABLE {1}_ext ({2}) USING (DATAOBJECT '/export/home/nz/{1}.csv' DELIMITER ';');";
+    private static final String DROP_SCHEMA = "DROP TABLE {1}_ext IF EXISTS";
     private static final Class[] classes = new Class[]{Category.class, Location.class, Manager.class, Product.class, Sales.class, Shop.class, Transaction.class};
 
     @Autowired
@@ -21,7 +22,13 @@ public class SchemaRepository {
 
     public void createExternalTables() {
         for (Class aClass : classes) {
-            jdbcTemplate.execute(setParameters(CATEGORY_SCRIPT, aClass));
+            jdbcTemplate.execute(setParameters(CREATE_EXTERNAL_SCRIPT, aClass));
+        }
+    }
+
+    public void dropExternalTables() {
+        for (Class aClass : classes) {
+            jdbcTemplate.execute(setParameters(DROP_SCHEMA, aClass));
         }
     }
 
