@@ -1,10 +1,6 @@
-package org.warehouse;
-
-import org.hibernate.annotations.GenericGenerator;
+package org.warehouse.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Objects;
 
@@ -12,9 +8,10 @@ import java.util.Objects;
 public class Category {
 
     private static final long serialVersionUID = 1L;
+    private static final String FIELDS = "id int, name varchar(40)";
 
     @Id
-    public Integer id;
+    public int id;
 
     public String name;
 
