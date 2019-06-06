@@ -70,7 +70,7 @@ public class SchemaRepository {
                 properties.append(field.getName()).append(" float8, ");
             } else if (type == LocalDate.class) {
                 properties.append(field.getName()).append(" date, ");
-            } else {
+            } else if (type != SalesId.class) {
                 properties.append(field.getName()).append("_id int, ");
             }
         }

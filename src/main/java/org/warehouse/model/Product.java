@@ -21,7 +21,6 @@ public class Product implements Serializable {
     private String name;
 
     public Product() {
-
     }
 
     public int getId() {
@@ -67,7 +66,7 @@ public class Product implements Serializable {
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", category=" + category +
+                ", categoryId=" + category.getId() +
                 ", name='" + name + '\'' +
                 '}';
     }

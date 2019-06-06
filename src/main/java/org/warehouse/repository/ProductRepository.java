@@ -7,4 +7,6 @@ import org.warehouse.model.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer>, JpaSpecificationExecutor<Product> {
+
+
 }

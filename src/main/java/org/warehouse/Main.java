@@ -15,6 +15,7 @@ public class Main extends Application {
     private ConfigurableApplicationContext context;
     private Parent rootNode;
 
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -29,7 +30,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
         primaryStage.setScene(new Scene(rootNode));
         primaryStage.show();
     }

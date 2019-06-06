@@ -80,8 +80,8 @@ public class Shop {
         return "Shop{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", location=" + location +
-                ", manager=" + manager +
+                ", locationId=" + location.getId() +
+                ", managerId=" + manager.getId() +
                 '}';
     }
 }

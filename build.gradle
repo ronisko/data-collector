@@ -51,6 +51,15 @@ javafx {
     version = '11.0.2'
 }
 
+sourceSets {
+    main {
+        java {
+            srcDirs 'src/main/java'
+            srcDirs 'build/generated/sources/java'
+        }
+    }
+}
+
 sourceSets.configureEach { sourceSet ->
     tasks.named(sourceSet.compileJavaTaskName).configure {
         options.annotationProcessorGeneratedSourcesDirectory = file("$buildDir/generated/sources/java")

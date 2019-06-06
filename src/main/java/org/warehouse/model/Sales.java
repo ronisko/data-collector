@@ -9,19 +9,22 @@ public class Sales {
 
     private static final long serialVersionUID = 1L;
 
+    @EmbeddedId
+    private SalesId id = new SalesId();
+
     @ManyToOne
     @JoinColumn(nullable = false)
-    @MapsId("transactionId")
+    @MapsId("transaction_id")
     private Transaction transaction;
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    @MapsId("productId")
+    @MapsId("product_id")
     private Product product;
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    @MapsId("shopId")
+    @MapsId("shop_id")
     private Shop shop;
 
     private double sales;
@@ -102,9 +105,9 @@ public class Sales {
     @Override
     public String toString() {
         return "Sales{" +
-                "transaction=" + transaction +
-                ", product=" + product +
-                ", shop=" + shop +
+                "transactionId=" + transaction.getId() +
+                ", productId=" + product.getId() +
+                ", shopId=" + shop.getId() +
                 ", sales=" + sales +
                 ", revenue=" + revenue +
                 ", quantity=" + quantity +
