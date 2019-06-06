@@ -2,18 +2,19 @@ package org.warehouse.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
+@Table(name = "CATEGORY_TAB")
 public class Category {
 
     private static final long serialVersionUID = 1L;
-    private static final String FIELDS = "id int, name varchar(40)";
 
     @Id
-    public int id;
+    private int id;
 
-    public String name;
+    private String name;
 
     public Category() {
     }
