@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 
 public class ShopDto implements ObservableDto {
 
+    private static final String[] COL_NAMES = new String[]{"ID", "NAME", "LOCATION_ID", "MANAGER_ID"};
+
     private int id;
 
     private String name;
@@ -54,5 +56,10 @@ public class ShopDto implements ObservableDto {
 
     public ObservableList<String> toObservableList() {
         return FXCollections.observableArrayList(Integer.toString(id), name, Integer.toString(locationId), Integer.toString(managerId));
+    }
+
+    @Override
+    public String[] getColumns() {
+        return COL_NAMES;
     }
 }

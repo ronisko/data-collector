@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,8 +19,6 @@ import java.util.List;
 @Component
 public class Controller {
 
-    private static final String[] COL_NAMES = new String[]{"ID", "NAME", "LOCATION_ID", "MANAGER_ID"};
-
     @Autowired
     private SchemaRepository schemaRepository;
 
@@ -28,6 +27,9 @@ public class Controller {
 
     @FXML
     private TableView<ObservableList<String>> tableView;
+
+    @FXML
+    private TextField description;
 
     public void createExternalSchema() {
         schemaRepository.createExternalTables();
@@ -47,6 +49,26 @@ public class Controller {
 
     public void insertExternal() {
         schemaRepository.insertExternalIntoTables();
+    }
+
+    public void showFirstDescription() {
+        description.textProperty().setValue("Shop with highest average revenue per transaction.");
+    }
+
+    public void showSecondDescription() {
+        description.textProperty().setValue("");
+    }
+
+    public void showThirdDescription() {
+        description.textProperty().setValue("");
+    }
+
+    public void showFourthDescription() {
+        description.textProperty().setValue("");
+    }
+
+    public void showFifthDescription() {
+        description.textProperty().setValue("Ten best selling products.");
     }
 
     public void getFirstQuery() {
@@ -70,9 +92,11 @@ public class Controller {
     }
 
     private void showTable(List<ObservableDto> dtos) {
-        for (int i = 0; i < COL_NAMES.length; i++) {
+        String[] columns = dtos.get(0).getColumns();
+        tableView.getColumns().removeIf(a -> true);
+        for (int i = 0; i < columns.length; i++) {
             final int finalIdx = i;
-            TableColumn<ObservableList<String>, String> column = new TableColumn<>(COL_NAMES[i]);
+            TableColumn<ObservableList<String>, String> column = new TableColumn<>(columns[i]);
             column.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().get(finalIdx)));
             tableView.getColumns().add(column);
         }

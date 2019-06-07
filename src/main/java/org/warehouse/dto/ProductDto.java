@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 
 public class ProductDto implements ObservableDto {
 
+    private static final String[] COL_NAMES = new String[]{"ID", "NAME", "CATEGORY_NAME", "QUANTITY_SUM"};
+
     private int id;
 
     private String name;
@@ -52,7 +54,13 @@ public class ProductDto implements ObservableDto {
         this.quantitySum = quantitySum;
     }
 
+    @Override
     public ObservableList<String> toObservableList() {
         return FXCollections.observableArrayList(Integer.toString(id), name, categoryName, Integer.toString(quantitySum));
+    }
+
+    @Override
+    public String[] getColumns() {
+        return COL_NAMES;
     }
 }
