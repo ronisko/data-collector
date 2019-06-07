@@ -3,9 +3,7 @@ package org.warehouse.dto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.Objects;
-
-public class ShopDto {
+public class ShopDto implements ObservableDto {
 
     private int id;
 
@@ -52,32 +50,6 @@ public class ShopDto {
 
     public void setManagerId(int managerId) {
         this.managerId = managerId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ShopDto shopDto = (ShopDto) o;
-        return id == shopDto.id &&
-                locationId == shopDto.locationId &&
-                managerId == shopDto.managerId &&
-                Objects.equals(name, shopDto.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, locationId, managerId);
-    }
-
-    @Override
-    public String toString() {
-        return "ShopDto{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", locationId=" + locationId +
-                ", managerId=" + managerId +
-                '}';
     }
 
     public ObservableList<String> toObservableList() {

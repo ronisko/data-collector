@@ -8,11 +8,12 @@ import javafx.scene.control.TableView;
 import javafx.stage.FileChooser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.warehouse.dto.ShopDto;
+import org.warehouse.dto.ObservableDto;
 import org.warehouse.repository.QueryRepository;
 import org.warehouse.repository.SchemaRepository;
 
 import java.io.*;
+import java.util.List;
 
 @Component
 public class Controller {
@@ -49,38 +50,39 @@ public class Controller {
     }
 
     public void getFirstQuery() {
-        ShopDto shopDto = queryRepository.firstQuery();
-        for (int i = 0; i < COL_NAMES.length; i++) {
-            final int finalIdx = i;
-            TableColumn<ObservableList<String>, String> column = new TableColumn<>(COL_NAMES[i]);
-            column.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().get(finalIdx)));
-            tableView.getColumns().add(column);
-        }
-        tableView.getItems().add(shopDto.toObservableList());
+        List<ObservableDto> dtos = queryRepository.firstQuery();
+        showTable(dtos);
     }
 
-    public void getSecondQuery() {
-
+    public void getFifthQuery() {
+        List<ObservableDto> dtos = queryRepository.fifthQuery();
+        showTable(dtos);
     }
 
     public void downloadTableAsCsv() throws IOException {
-
         FileChooser fileChooser = new FileChooser();
-
-        //Set extension filter for text files
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
         fileChooser.getExtensionFilters().add(extFilter);
-
         File file = fileChooser.showSaveDialog(tableView.getScene().getWindow());
         if (file != null) {
             saveTableToFile(file);
         }
     }
 
+    private void showTable(List<ObservableDto> dtos) {
+        for (int i = 0; i < COL_NAMES.length; i++) {
+            final int finalIdx = i;
+            TableColumn<ObservableList<String>, String> column = new TableColumn<>(COL_NAMES[i]);
+            column.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().get(finalIdx)));
+            tableView.getColumns().add(column);
+        }
+        for (ObservableDto dto : dtos) {
+            tableView.getItems().add(dto.toObservableList());
+        }
+    }
+
     private void saveTableToFile(File file) throws IOException {
-        Writer writer = null;
-        try {
-            writer = new BufferedWriter(new FileWriter(file));
+        try (Writer writer = new BufferedWriter(new FileWriter(file))) {
             StringBuilder columnBuilder = new StringBuilder();
             for (TableColumn<ObservableList<String>, ?> column : tableView.getColumns()) {
                 columnBuilder.append(column.getText()).append(";");
@@ -98,12 +100,6 @@ public class Controller {
                 itemBuilder.append("\n");
                 writer.write(itemBuilder.toString());
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-
-            writer.flush();
-            writer.close();
         }
     }
 }

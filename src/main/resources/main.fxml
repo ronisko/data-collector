@@ -52,7 +52,8 @@
             GridPane.rowIndex="10"/>
     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Query 4" GridPane.columnIndex="4"
             GridPane.rowIndex="11"/>
-    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Query 5" GridPane.columnIndex="4"
+    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#getFifthQuery" text="Query 5"
+            GridPane.columnIndex="4"
             GridPane.rowIndex="12"/>
     <Label text="Execute query" GridPane.columnIndex="4" GridPane.rowIndex="7"/>
     <Label text="Show description" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="1"/>
