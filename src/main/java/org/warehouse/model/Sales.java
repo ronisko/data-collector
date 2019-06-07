@@ -1,11 +1,12 @@
 package org.warehouse.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "SALES_TAB")
-public class Sales {
+public class Sales implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
