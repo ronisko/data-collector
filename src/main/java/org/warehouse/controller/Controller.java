@@ -76,6 +76,11 @@ public class Controller {
         showTable(dtos);
     }
 
+    public void getThirdQuery() {
+        List<ObservableDto> dtos = queryRepository.thirdQuery();
+        showTable(dtos);
+    }
+
     public void getFifthQuery() {
         List<ObservableDto> dtos = queryRepository.fifthQuery();
         showTable(dtos);
@@ -94,6 +99,7 @@ public class Controller {
     private void showTable(List<ObservableDto> dtos) {
         String[] columns = dtos.get(0).getColumns();
         tableView.getColumns().removeIf(a -> true);
+        tableView.getItems().removeIf(a -> true);
         for (int i = 0; i < columns.length; i++) {
             final int finalIdx = i;
             TableColumn<ObservableList<String>, String> column = new TableColumn<>(columns[i]);

@@ -48,8 +48,8 @@
             GridPane.columnIndex="4" GridPane.rowIndex="8"/>
     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Query 2" GridPane.columnIndex="4"
             GridPane.rowIndex="9"/>
-    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Query 3" GridPane.columnIndex="4"
-            GridPane.rowIndex="10"/>
+    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#getThirdQuery" text="Query 3"
+            GridPane.columnIndex="4" GridPane.rowIndex="10"/>
     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Query 4" GridPane.columnIndex="4"
             GridPane.rowIndex="11"/>
     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#getFifthQuery" text="Query 5"
