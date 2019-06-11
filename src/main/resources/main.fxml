@@ -42,16 +42,14 @@
                   text="Query 4" toggleGroup="$toggleGroup" GridPane.columnIndex="9" GridPane.rowIndex="1"/>
     <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showFifthDescription"
                   text="Query 5" toggleGroup="$toggleGroup" GridPane.columnIndex="10" GridPane.rowIndex="1"/>
-    <TextField fx:id="description" prefHeight="60.0" GridPane.columnIndex="6" GridPane.columnSpan="5"
-               GridPane.rowIndex="2" GridPane.rowSpan="2"/>
     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#getFirstQuery" text="Query 1"
             GridPane.columnIndex="4" GridPane.rowIndex="8"/>
-    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Query 2" GridPane.columnIndex="4"
-            GridPane.rowIndex="9"/>
+    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#getSecondQuery" text="Query 2"
+            GridPane.columnIndex="4" GridPane.rowIndex="9"/>
     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#getThirdQuery" text="Query 3"
             GridPane.columnIndex="4" GridPane.rowIndex="10"/>
-    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Query 4" GridPane.columnIndex="4"
-            GridPane.rowIndex="11"/>
+    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#getFourthQuery" text="Query 4"
+            GridPane.columnIndex="4" GridPane.rowIndex="11"/>
     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#getFifthQuery" text="Query 5"
             GridPane.columnIndex="4" GridPane.rowIndex="12"/>
     <Label text="Execute query" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="7"/>
@@ -60,6 +58,8 @@
                GridPane.rowIndex="7" GridPane.rowSpan="12"/>
     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#downloadTableAsCsv" text="Download CSV"
             GridPane.columnIndex="6" GridPane.columnSpan="5" GridPane.rowIndex="20"/>
+    <TextArea fx:id="description" prefHeight="54.0" prefWidth="485.0" GridPane.columnIndex="6" GridPane.columnSpan="5"
+              GridPane.rowIndex="2" GridPane.rowSpan="2"/>
     <columnConstraints>
         <ColumnConstraints maxWidth="92.0" minWidth="24.0" prefWidth="30.0"/>
         <ColumnConstraints halignment="CENTER" maxWidth="233.0" minWidth="154.0" prefWidth="154.0"/>

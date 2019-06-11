@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -29,7 +29,7 @@ public class Controller {
     private TableView<ObservableList<String>> tableView;
 
     @FXML
-    private TextField description;
+    private TextArea description;
 
     public void createExternalSchema() {
         schemaRepository.createExternalTables();
@@ -56,7 +56,7 @@ public class Controller {
     }
 
     public void showSecondDescription() {
-        description.textProperty().setValue("");
+        description.textProperty().setValue("For each category query returns name of the shop where this category \nhas the highest sale value.");
     }
 
     public void showThirdDescription() {
@@ -64,7 +64,7 @@ public class Controller {
     }
 
     public void showFourthDescription() {
-        description.textProperty().setValue("");
+        description.textProperty().setValue("Comparision of sales value from the first and the second half of the month.");
     }
 
     public void showFifthDescription() {
@@ -76,8 +76,18 @@ public class Controller {
         showTable(dtos);
     }
 
+    public void getSecondQuery() {
+        List<ObservableDto> dtos = queryRepository.secondQuery();
+        showTable(dtos);
+    }
+
     public void getThirdQuery() {
         List<ObservableDto> dtos = queryRepository.thirdQuery();
+        showTable(dtos);
+    }
+
+    public void getFourthQuery() {
+        List<ObservableDto> dtos = queryRepository.fourthQuery();
         showTable(dtos);
     }
 
