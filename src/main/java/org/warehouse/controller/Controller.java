@@ -60,7 +60,7 @@ public class Controller {
     }
 
     public void showThirdDescription() {
-        description.textProperty().setValue("");
+        description.textProperty().setValue("Best prospering manager");
     }
 
     public void showFourthDescription() {
